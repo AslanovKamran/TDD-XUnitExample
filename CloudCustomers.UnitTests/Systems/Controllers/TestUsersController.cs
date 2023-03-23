@@ -1,6 +1,7 @@
 using CloudCustomers.API.Controllers;
 using CloudCustomers.API.Models;
 using CloudCustomers.API.Services;
+using CloudCustomers.UnitTests.Fixtures;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -9,7 +10,7 @@ using Xunit;
 namespace CloudCustomers.UnitTests.Systems.Controllers;
 
 
-public class UnitTest1
+public class TestUsersController
 {
 	[Fact]
 	public async Task Get_OnSuccess_ReturnsStatusCode200()
@@ -17,21 +18,7 @@ public class UnitTest1
 		//Arrange
 		var mockUserService = new Mock<IUserService>();
 		mockUserService.Setup(service => service.GetAllUsers())
-						.ReturnsAsync(new List<User>()
-						{
-							new()
-							{  Id=1,
-								Name = "John",
-								Address = new ()
-								{
-									Street = "17 Main Str.",
-									City = "Madison",
-									ZipCode = "123"
-								},
-								Email = "johnDoe228@example.com"
-
-							}
-						});
+						.ReturnsAsync(UsersFixture.GetTestUsers());
 
 		var systemUnderTest = new UsersController(mockUserService.Object);
 
@@ -65,21 +52,7 @@ public class UnitTest1
 		//Arrange
 		var mockUserService = new Mock<IUserService>();
 		mockUserService.Setup(service => service.GetAllUsers())
-						.ReturnsAsync(new List<User>()
-						{
-							new()
-							{  Id=1,
-								Name = "John",
-								Address = new ()
-								{
-									Street = "17 Main Str.",
-									City = "Madison",
-									ZipCode = "123"
-								},
-								Email = "johnDoe228@example.com"
-								
-							}
-						});
+						.ReturnsAsync(UsersFixture.GetTestUsers());
 
 		var systemUnderTest = new UsersController(mockUserService.Object);
 

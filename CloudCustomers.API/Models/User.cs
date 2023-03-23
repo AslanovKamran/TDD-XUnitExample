@@ -13,5 +13,12 @@
 			Email = string.Empty;
 			Address = new();
 		}
+
+		public User( string name, string email, Address address)
+		{
+			Name = name;
+			Email = email;
+			Address = address;
+		}
 	}
 }

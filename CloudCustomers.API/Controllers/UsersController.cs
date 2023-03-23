@@ -20,7 +20,6 @@ public class UsersController : ControllerBase
     public async Task<IActionResult>Get()
     {
 		var users = await _userService.GetAllUsers();
-		var users2 = await _userService.GetAllUsers();
 		if (users.Any()) { return Ok(users); }
 		return NotFound();
     }
